@@ -12,7 +12,7 @@ Exploratory Phase
 2. Frequency Counts
 3. Boxplots
 
-See [details](exploratory/README.html) for the **grid_quarters** and **rae** files.
+See [details](exploratory/README.md) for the **grid_quarters** and **rae** files.
 
 **Other Phases: To Be Determined**
 
