@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Exploratory Analysis</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Exploratory Analysis</h1>
+
+<p><strong>Massachusetts 37 Billion Mile Data Challenge</strong><br/>
+<strong>Team Russian Blue #37bill</strong>  </p>
+
+<p>Before running other exploratory analysis, the two .csv files were processed by the <a href="https://github.com/EarlGlynn/CharCount">CharCount utility</a>.  The <a href="CharCount.pdf">results in this PDF</a> show the files contain no unusual characters.</p>
+
+<p>Subfolders contain exploratory information about these files:  </p>
+
+<ol>
+<li>Subfolder <strong>grid_quarters</strong> for <strong>grid_quarters_public_noheader.csv</strong><br/></li>
+<li>Subfolder <strong>rae</strong> for <strong>rae_public_noheader.csv</strong><br/></li>
+</ol>
+
+<p>Each of these subfolders contain three types of information: </p>
+
+<h2>Field Summary</h2>
+
+<ol>
+<li>A <strong>Field-Summary</strong> table is shown in pdf, Excel and csv formats.<br/></li>
+</ol>
+
+<p>Each file was first read with all data treated as character strings.  The <em>cmin</em> and <em>cmax</em> columns show the minimum and maximum size of the characters strings.  In particular, the <em>cmax</em> value may be useful for database schema definitions.</p>
+
+<p>The <em>N</em>, <em>Missing</em>, and <em>NUnique</em> columns tell how many times the field was defined in the file (N), how many times the field was missing (<em>Missing</em>), and the number of unique values for the field (<em>NUnique</em>).  </p>
+
+<p>Small <em>NUnique</em> values are indicative of ordinal data, which while numeric should not be used in any descriptive statistics. </p>
+
+<p>Several of the fields in the <strong>grid_quarters* file had more than one character representation of 0 when converted to numeric.  The **ZeroVariation</strong> column shows the zero character strings and their frequency of occurrence.</p>
+
+<p>For numeric data, the <strong>Zero</strong> and <strong>NonZero</strong> columns gives the total number of zeroes (from all the ZeroVariations) and the number of non-zero values.</p>
+
+<p>Finally, for numeric data, the <strong>Min</strong> and <strong>Max</strong> numeric values are shown.</p>
+
+<h2>Frequency Counts</h2>
+
+<ol>
+<li>The subfolder prefixed with <strong>Counts</strong> has a file with the frequency counts for each of the fields in the file &ndash; except files for fields with a very large number of unique values are not shown if they are 1 MB or larger (in general).<br/></li>
+</ol>
+
+<p>Often, unusual or unexpected values can be observed at the beginning and end of these counts files.  </p>
+
+<p>Note:  all numeric values are treated as character strings in these frequency counts.</p>
+
+<p>The file number prefixes match the row numbers in the <strong>Field_Summary</strong> table.</p>
+
+<p>For example, the file <strong>15-veh_zip.csv</strong> in the <strong>Counts-rae</strong> subfolders shows frequency counts for all zip codes in the file.  When opened with an ASCII editor, one can learn that about 2.2 million have a veh_zip of &ldquo;00000&rdquo;, with a number of unusual zip counts, like 78,324 instances of zip 30348 (Atlanta, GA).</p>
+
+<h2>Boxplots</h2>
+
+<ol>
+<li>The subfolder prefixed with <strong>Boxplots</strong> shows boxplots for most numeric values that are not ordinal data. The boxplots are shown with the original data and the log10 values. </li>
+</ol>
+
+<p>For now, all zero values are ignored in the creation of these boxplots.</p>
+
+<p>Viewing these boxplots is each via these links to the PDF files:    </p>
+
+<ul>
+<li><a href="exploratory/grid_quarters/Boxplots-GridQuarters/GridQuarters-Boxplots.pdf">GridQuarters</a></li>
+<li><a href="exploratory/rae/Boxplots-rae/rae-Boxplots.pdf">rae-Boxplots</a></li>
+</ul>
+
+<p>From the <strong>rae</strong> file, the following boxplot examples show the <strong>mi_per_day</strong> data are very skewed (even after ignoring zeroes), but are somewhat lognormal, but with a number of outliers:</p>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAMgCAMAAADIvuz2AAAAz1BMVEUAAAAAADoAAGYAAP8AOjoAOmYAOpAAOv8AZpAAZrYAZv86AAA6ADo6AGY6AP86OmY6OpA6Ov86ZrY6Zv86kJA6kLY6kNs6kP9mAABmADpmAGZmAP9mOgBmOjpmOv9mZmZmZv9mkP9mtttmtv+QOgCQOjqQOmaQOv+QZgCQZv+QkP+Qtv+Q29uQ2/+2ZgC2Zv+2kP+2tv+225C22/+2/7a2//++vr7bkDrbkP/btv/b25Db2//b/9vb////tmb/tv//25D/2////7b//9v////3UdbsAAAfvklEQVR4nO2dDV8b2XWHsUm9Na6366QFYqdpUpzQtME0bVXoCxiwvv9n6rxJmpHY5R6dOTP/o32eX9ZYOjr3z1yeuVxdE/toCRDA0dyfABwmiAUhIBaEgFgQAmJBCIgFISAWhIBYEAJiQQiIBSEgFoSAWBACYkEIiAUhIBaEgFgQAmJBCIgFISAWhIBYEAJiQQiIBSEgFoSAWBACYkEIc4j1+P1J/eHT8fHJj7zi0/HCNuSn7+6cn5QMP3bt3axddrN2e3xV1PbjOTtT9vj9mW2In2IGsa7bqalm6MfNsnL4YnWzdr2atU/eqXtmyq6tcv4E04t1efyhnpnH77+7q/9bPf31+KRSbXF7fHwxnNzL479Uc1k/rmp1sXrmd8e9+7Vqu6hn6Ws951fVw0X12xHvvYlprr2+1OYS6jmpL249a1W1fsVtNROjT9mY0zaDWFdfVwtV/0Kaa2xZbM1STTULzc1ad1y2j7frn9qP9ZRfb32fyER97e2lnnSXWt9+3aw1v1w3LlwFTNmIC/8ce6yVWNf9G6SapUV1P15UF3u1NUtn9WxftMtbfXNd9r+DNvfw7WrWPtWDnDSvykpzCc1X+fiqf3GdWGf1vF0su/Vm5Ckbcd7mFGtwIc2Tn5o52J6l5lvD2er+bO/WrcHaW+1Tc+9efnfn3oDMSHXt7TVV60j/4gZiNcqMP2WX4630s4nVLeoXgyfb3cR+s1Tdh+03hdvjfx3z7c3UvCBW+62wJ9aYUzbiFmI2sbpt6NXgyednqb+ut8/0Ln+9rlcT2T6opyvvFuunvxWuNu8vibXnlB3CitVuLJsN5GL95POzNNiJdq9Y7tS/rrax1TOZDx+e37wPZq2bqfGn7DD2WJftG5WXxfpL947muntrs3VfVeOcfWpn8ax+f1P9JvEWa+u44VN33NCftVawq4ApS/6u0Ib9Lrrd7NwOga/PLcBff+oa952y3OdYVuyzlPmwYYtPq4Oo3cpPrMr7Tlnuk/cyujcs1Z7y+Vna1Lcr7UH0gfC121Ltsv1nhSNMWfY/K4SfA4gFISAWhIBYEAJiQQiIBSEgFoSAWBACYkEIkWI9vDuqeNU/6H143z8T/vb5YvhEx03V9nrR9F8sl/fNg/pR/aF79HR+9OaueWHzmvQc3FyFirU7ETuT9Wzjl+bpp19fLR/+5qpuuXlbzc7F8ubNXfeo7qw+1Ny/SfwzMmsObq6mEOvLaXu11Q1ZPVU/W/9XPf6r39R34cMP/9zcSfUT/1Dfst/+0Ny49/VktPPWvOqumb720dPHRTd899yX6m5sMuq7929/83rR/rZ7ZnXv6nJwczWFWE8f//Pjor5v7t/8z2ayqim8P2om691pcyvVTzTfC6oLXK3Z3VRUc92brMGj7l5sp7j9sjy8u2i+Qt2g9Rfq42LzQkkObq7i91jNt/fTbuY2d2H9+bf7hv4Tzf1Xrend7759Pm3GqeawWd7ruWwe1fPQTFY3fxU3p82DapjmHq9Gqx52z2xepcrBzdUke6z66uv7pj9ZTfFLb7LqF3QLe82XZsE/bR80W4h3R3/flqtH67twvWtonjlvNsCr+7warXumbn4l7dbBzdUkYn35x7eWu7DtuWiX6fWj5bK5tdpH633Dl246m86u3r8LP653C9qb/IObqynEevjh//5wVe8bHt7/+/tmqb153d839DYSza1SX9a3Py66uepW8qbt7epRve7XG4H17N40k9ZuFlazuNqMvLmrf5dDrIOZq/g91tE/NVvRu9U7nfpA5e+aW3D1Tmfz1uev22u/aZbk1cFL+6h+s1JfbveoPZtZbxuaZfzotMlov0ibdzr1y7/Ivys8tLnSOnl/9ggQnkV8rnTEqu5K8Q22DgnmyiPW0eEx2rz+7OfKJZajV5NAscJGngvEMoBY5SCWAcQqB7EMIFY5iGUAscpBLAOIVQ5iGUCschDLAGKVg1gGEKscxDKAWOUglgHEKgexDCBWOYhlALHKQSwDiFUOYhlArHIQywBilYNYBhCrHMQygFjlIJYBxCoHsQwgVjmIZQCxyjkAsV78f4SMl5Rw5K0clblKINbRtFHZRt6J0ZgrxNqOyjbyTozGXCHWdlS2kXdiNOYqgVg6+wbJkbdyVOYqg1jTkV+s6UAsA4hVDmIZQKxyEMsAYpWDWAbyi8XmXZL0YnHcoAli2aL2L4f1aoJYtqj9y2G9mqQXiz2WJvnFmg7EMoBY5SCWAcQqB7EMIFY5iGUAscpBLAOIVQ5iGUCschDLAGKVg1gGEKscxDKAWOUgloH8YvFHOpJ4r+jh3UX9Twk+8w/f8ofQ4w2dEOcV1f+Wc/1Pfbf/Cv2YI5eCWJo4r+jp46L/L8Q3I5b9s5FjgViaeK+oWq7uT5fL+7ejj1wKeyxJ3Ff0pVmddr36+c3Vyxf88K6ZrNe7/2b6z26yJEeeC69Y9Ya05n73rc7PbrIkR54Lr1irjWhvQ1rcmw7EKocVywBilePeYz2ds8dSHnkueFdoALHKQSwDiFUOxw0G8ouV54CUzbv4yDsxSf5Ih+MG8ZF3YpKIxYolPvJOTBKxOG4QH3krJ80eK6hXk/xiTQdiGUCscjhuMIBY5bB5N4BY5XDcYACxymHFMpBfrETvCjlu0B55JybLOVZMryaIZYvavxzWqwli2aL2Ly85blAfeSsnzR6Lzbv4yHMRcNww8f+7d0IQqxxWLAOIVQ7HDQbyi5VnjxXUq0l6sTK9K4zp1QSxbFH7l5ccN6iPPIyZ9m9M2r/M5l1+5GFMHrH46QbxkXdikojFiiU+8k5MErE4bhAfeSuH4wZF8os1HYhlALHK4bjBAGKVw+bdQH6x8uyxOG4QH3kYk+ccixVLfOSdmCRicdwgPvJOTBaxYno1yS9Wnm+FQb2apBcr0ea9Pm54dcXmXXbkrZw0YtWb92+fTxFLdeSdmCTfCluhvrxFLNGRd2KSiNUdN9z84j1iSY48jEm0eX86P60/3OyeNyCWwsjDmERixfRqkl+saaP2L4f1aoJYtqj9y2G9muQXi2+FkqQXK9E5VlCvJvnFmg7EMpBfLFYsSdKLxeZdk/xisXmXJL9Y00btXw7r1SS/WKxYkiCWIcpVDuvVBLEMUa5yWK8miGWIcpXDejXJL9a0UfuXw3o1yS8WK5YkiGWIcpXDejVBLEOUqxzWq0l+saaN2r8c1qtJfrFYsSRBLEOUqxzWqwliGaJc5bBeTRDLEOUqh/VqgliGKFc5rFcTxDJEucphvZogliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKof1aoJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5ymG9miCWIcpVDuvVBLEMUa5yWK8miGWIcpXDejVBLEOUqxzWqwliGaJc5bBeTRDLEOUqh/VqgliGKFc5rFcTxDJEucphvZogliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKof1aoJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5ymG9ppyp5gqxLFGuclivMUZjsiRHHsYgli1GY7IkRx7GIJYtRmOyJEcexiCWJYc9VnEMYkmCWIYoVzmsVxPEMkS5ymG9miCWIcpVDuvVBLEMUa5yWK8miGWIcpXDejVBLEOUqxzWqwliGaJc5bBeTRDLEOUqh/VqgliGKFc5rFcTxDJEucphvZogliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKof1aoJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5yhUP75rP9vVij95sIJYhylVeLr99vmg+3r+5M/emA7EMUa7ycvn0cTH4aOlNxyhX9PB+d3FHrB1Yscp5Oj86+pF9A2Lt0M0We6wCns6raRqsWEcrnCMXkkmsmF5N/Ff0dP7mf/hW+HI5rFeTMa7o4d0zizti7cJxg/bIw5g8YrF5Fx95GJNHLI4bxEcexuQRixVLfORhTB6xOG4QH3kYk0ismF5NEMsQ5SqH9WqCWIYoV3nJcYP6yMOYPGKxeRcfeRiTRyyOG8RHHsbkEYsVS3zkYUwesThuEB95GJNIrJheTRDLEOUqh/VqgliGKFd5yXGD+sjDmDxisXkXH3kYk0esZ44bJv5x2wlBLEOUq8yKJT/yMCaPWBw3iI88jEkkVkyvJohliHKVw3o1QSxDlKu85LhBfeRhTB6x2LyLjzyMySMWP90gPvIwJo9YrFjiIw9j8ojFcYP4yMOYRGLF9GqCWIYoVzmsVxPEMkS5yu2mvf5uuLvFQiyJkYcxqcRq3hA+/NLemw7EMkS5yo1YDz/ccdwgO/IwJpFY56/+/Md6xfqB4wbJkYcxecSqT7KO3i7vOW4QHXkYk0mskF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5ymG9miCWIcpVVvhL8ScEsQxRrvKyflN4undvNhDLEOUq1zz9+mrv3mQgliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKof1aoJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5ymG9miCWIcpVDuvVBLEMUa5yWK8miGWIcpXDejVBLEOUqxzWqwliGaJc5bBeTRDLEOUqh/VqgliGKFc5rFcTxDJEucphvZogliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKof1aoJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5ymG9miCWIcpVDuvVBLEMUa5yWK8miGWIcpXDejVBLEOUqxzWqwliGaJc5bBeTRDLEOUqh/VqgliGKFc5rFcTxDJEucphvZogliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKof1aoJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5ymG9miCWIcpVDuvVBLEMUa5yWK8miGWIcpXDejVBLEOUqxzWqwliGaJc5bBeTRDLEOUqh/VqgliGKFc5rFcTxDJEucphvZogliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKof1aoJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5ymG9miCWIcpVDuvVJJlYR4VEZCOWhWRiPRPDiiVJerGWk3mFWBbyiyUThFh9EGu0IMTqcwBiTQZiGUCsctxiPbxr3mq8XuzRmw3EKscr1rfPF83H+zd35t50HIBYKkEvfh5PHxeDj5bedCDWaEGsWH0Qa7Sglz+Pp3P2WMojiwbxrrAPYo0WhFh9DkCsyeC4wQBilcPm3YD3iqqb8NUV76ALyhw3WKhvwm+fT2edK5UgVqw+zitqhfrytidW7A/bPYNKUIbjBpmfMXqJ7ia8+cV7VqwE7wqPpo3y8HR+Wn+42b0LVb7ekwUh1nZUtpFFgxIcNyCWJAeweU+zx5pl5LnguMEAYpVzACvWdByAWCpBGY4bpgOxRgtK8K5wQhBrtCDE6oNYowUlOG6YEMQaLYjNe58DEGsyAo4bJv+D1clArHJYsQwgVjkcNxg4ALFUgnhX2AexRgtCrD6INVoQxw19EGu0IDbvfRBrtCB+uqHPAYg1GaxYBhCrHI4bDCBWObwrNHAAYqkEIVYfxBotiOOGPog1WhCb9z6INVoQxw19EGu0IFasPspilf6LTIVEXxHHDX2kxfqvMREQK6ZXE8Qa7YoQqw9ijXZFiNUHsUa7IsTqg1ijXdHLxw3n3duIGf/Op8lArNGu6OWA+i/V3Lc3G4g12hUVBDz9+mrv3mQg1mhXxB6rD2KNdkWI1QexRrsixOqDWKNdEWL1kRbr0P6sMKZXE8Qa7YoQqw9ijXZFiNVHWiz2WHlBrNGuCLH6INZoV4RYfRBrtCtCrD6INdoVIVYfxBrtihCrD2KNdkWI1QexRrsixOqDWKNdEWL1QazRrgix+iDWaFeEWH0Qa7QrQqw+iDXaFSFWH8Qa7YoQq4+0WPzYTF6UxUoWhFh9EGu0IMTqg1ijBSFWH8QaLQix+iDWaEGI1ecAxJoMxDKAWOUglgHEKgexDByAWCpBiNUHsUYLQqw+iDVaEGL1QazRghCrD2KNFoRYfQ5ArMlALAOIVQ5iGUCschDLwAGIpRKEWH0Qa7QgxOqDWKMFIVYfxBotCLH6INZoQYjV5wDEmgzEMoBY5SCWAcQqB7EMHIBYKkGI1QexRgtCrD6INVoQYvVBrNGCEKsPYo0WhFh9DkCsyUAsA4hVDmIZQKxyEMvAAYilEoRYfRBrtCDE6oNYowUhVh/EGi0Isfog1mhBiNXnAMSajAMQa4y/PLowKeHIc5FfrKNpo7KNPBeIZYzKNrJoEGJtR2UbWTQogVjssSw5KnOVQazpSC/WOP9MTlmUqxzWq0kysSb7B5meDXeVw3o1SSbWMzGsWJIgliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKof1aoJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsVxPEMkS5ymG9miCWIcpVDuvVBLEMUa5yWK8miGWIcpXDejVBLEOUqxzWqwliGaJc5bBeTRDLEOUqh/VqgliGKFc5rFcTxDJEucphvZogliHKVQ7r1QSxDFGuclivJohliHKVw3o1QSxDlKsc1qsJYhmiXOWwXk0QyxDlKlc8vGs+29eLPXqzgViGKFd5ufz2+aL5eP/mztybDsQyRLnKy+XTx8Xgo6U3HYhliHKVWbHkRx7G5BFr+XTOHkt55GFMIrFiejVBLEOUqxzWqwliGaJc5SXHDeojD2PyiMXmXXzkYUwesThuEB95GJNHLFYs8ZGHMXnE4rhBfORhTCKxYno18V7R7G90EEsT5xXNv23IJNbsd+GEOK/omTc6Ryt8I5eSSKz570Kdf9zxJeafq0RizX/ccDRtlIfZ3+gkEkvgLpw2KtvIw5g8YgnchdNGZRt5GJNIrJheU06WPdYsIw9jUos18TudCUEsQ5SrvOS4QX3kYUwesebfvE8IYhmiXGWF44YJQSxDlKvMiiU/8jAmj1jzHzdMCGIZolzlsF5NEMsQ5SqH9WqCWIYoV3nJcYP6yMOYPGKxeRcfeRiTRyyOG8RHHsbkEYsVS3zkYUwesThuEB95GJNIrJheTRDLEOUqh/VqgliGKFe53bTX3w13t1iIJTHyMCaVWM0bwodf2nvTgViGKFe5EevhhzuOG2RHHsYkEuv81Z//WK9YP3DcIDnyMCaPWPVJ1tHb5T3HDaIjD2MyiRXSqwliGaJc5bBeTRDLEOUqh/VqgliGKFc5rFcTxDJEucphvZogliHKVQ7r1QSxDFGuclivJohliHKVw3pNOfzdDcUxiGWL0ZgsyZGHMYhli9GYLMmRhzGIZYvRmCzJkYcxiGXJYY9VHINYkiCWIcpVDuvVBLEMUa5yWK8miGWIcpXDejVBLEOUqxzWqwliGaJc5bBeTRDLEOUqh/WacjhuKI5BLFuMxmRJjjyMQSxbjMZkSY68E6MxV4i1HZVt5GEMK5Ylhz1WcQxiSYJYhihXOaxXE8QyRLnKYb2aIJYhylUO69UEsQxRrnJYryaIZYhylcN6NUEsQ5SrHNarCWIZolzlsF5NEMsQ5SqH9WqCWIYoVzmsV5P8Yk0btX85rFeT/GKxYkmSX6xpo/Yvh/Vqkl8sVixJ8os1bdT+5bBeTfKLxYolCWIZolzlsF5TDj/oVxyDWLYYjcmSHHkYg1i2GI3Jkhx5J0ZjrhBrOyrbyMMYVixLDnus4hjEsuQgVnEMYtliNCZLcuSdGI25QqztqGwjD2NYsWwxGpMlOfIwBrEsOeyxLDGIpQdi2aL2L4f1apJeLJ3VHbH6pBeLFUsTxLJF7V8O69Ukv1i8K7TkqOwbJEcexiCWLUZjsiRH3onRmCvE2o7KNvJOjMZcIdZ2VLaRt3JUtg0JxNKZLMmRt3JU5iqDWNORXiyd1T2DWDJ3oeTIOzGIZYjRmCzJkXdiNOYqg1gyZzOSI2/lqKzuGcSaNirbyFs5iFUew4plitGYqwxiTRuVbeSdGI25SiCWzvIuOfJODGLpkV4snZsQsfrkF2s6EMtAfrFYsSRJLxZ7LFOOyl0oOfJODGIZYjQmS3LknRiNuUKs7ahsI2/lqKzuiLUdlW3kucgvls5dKDnyXOQXixXLkqNyEyLWdlS2kXdiNOYqg1j8dIMpRmOuEGsQlXDknRiNuUKsQVTCkbdy2GOVxyCWIohliUo48lwgliUq4chzgViWqIQjzwViWaISjryVw+a9PAaxTDEac4VYg6iEI+/EaMwVYg2iEo68E6MxV4g1iEo48lYOe6zyGMRSBLEsUQlHngvEskQlHHkuEMsSlXDkuUAsS1TCkecCsSxRCUeeC8SyRCUceS4QyxKVcOS5QCxLVMKRt3I4IC2PQSxTjMZcIdYgKuHIOzEac4VYg6iEI+/EaMwVYg2iEo68lcMeqzwGsRRBLEtUwpHnArEsUQlHngvEskQlHHkuEMsSlXDkuUAsS1TCkecCsSxRCUeeC8SyRCUceS4QyxKVcOS5QCxLVMKR5wKxLFEJR54LxLJEJRx5LhDLEpVw5LlALEtUwpHnArEsUQlHngvEskQ5+x/eHb26Wi6fPi7GHlkPxLJE+dq/fb6o/jtFrJfLy+YurHm9M1eItU0r1Je3M4qV5ydI67uw5v7Nnbn3RY5Gxf3pjLFiVdz84v1cYiX6mffV3de7C8f7So4r1gifj7P/6fy0/nDzOmCuikgkFivWKCDWDk/nzVdtvj2Wzr5BcuStHJW5SvCucEJGuaKb06iRpUAsA4hVDmIZQKxyEMtA/j3WdCCWAcQqB7EMIFY5iGUAscpBLAOIVQ5iGUCschDLAGKVg1gGEKscxDKAWOUglgHEKgexDCBWOYhlALHKQSwDiFUOYhlArHIQywBilYNYBhCrHMQygFjlIJYBxCoHsQwgVjmRYh0ejtlgroYXHDaV8LMGsSAExIIQEAtCQCwIAbEgBMSCEBALQkAsCAGxIATEghAQC0JALAgBsSAExIIQEAtCQCwIAbEgBMSCEBALQkAsCAGxIATEghAQC0JALAgBsSAExIIQEAtCQCwIAbEgBMSCEBALQkAsCAGxIATEghAQC0JALAgBsSAExIIQEAtCQCwIAbEgBMSCEBALQkAsCAGxIATEghAQC0JALAgBsSAExIIQEAtCQCwIAbEgBMSCEBALQuiLdX18fLG8Pa44qx49ft/+5tNi878hj9/Xr/t6fLVdrVvPlo+/6r32uf5dusyyF4OHy+Pj7+7qL/lV/aid7tuzptQ+2diweWX763L14stWkp3eNT2xvp6sXvSneoTHD9Wvl6vY577Qjx9+Wz17/aH3qXVR1TOXF/uItW5BrFjqL/b1xdfv7qr/VWvDcT3dX1tX2ifXNnSvbH5tyvWLb4cP170btr4VNkNdN6Y0YlWK9VesyuKTqvB9K+/jh3+7WD7+/vJqU21G7+R9/NWn7qY4WfZf0fVXzv/uquv5bXcvdGJtDffheNEOcn28/emDg9uL2/Y70r8sLxf1l/O/11++9r5e3923F5tfmxfXr7k+q79uw94NA7Gum69bLeey+7Z0vOiL1WpbG9esZI8f/vdXy9urlVh1tcluP4FqgEX1utqV4Sva/ubTv1r3LDeZi+3hTpbtIFsvBh/VdNazWXvR/FJNeStW9+T1+i5ujei8aIv1snC2ebjq3bC1YjUmNgtWu2JVy11PrDry61n9Vb5uxbq7XPzpbqXNenfWZDz+R/e6+unBK9rn64X0+mrd09Jfsdal+nNqBtl6Mbi4PuktTvUi1Mzu9fHJZsW6rR+2r1z9ulx2Km52VevewfD9PdZZ++Lu+9IzYnUrVk+s29//frMerUdu9lidQPWIw1dsnq9WrOFn0xdrXape2Q6yfVOAg8t66e/2WCtXvvb3WGcrdZpXdr+2rYt2P361frju3bD1rvBks4Fuvi2dDN8VtnusnliP318t+3us9o3E5l3h9VX9+99d9F/R9a/3WFXPj+2xmuGqy+sGWQeAl+t2jVm9KxzIsX5XeLJ55XVvTWq/T9Zfid9uS7lhtnOszYILh8h8B6SX7JcOGU7eIQTEghAQC0JALAgBsSAExIIQEAtCQCwI4f8B6MALaRd6XLcAAAAASUVORK5CYII=" alt="Boxplots of mi_per_day"/></p>
+
+</body>
+
+</html>
+

@@ -1,0 +1,120 @@
+
+> ##################################################################################
+> ### rae_public_noheader.csv
+> 
+> Sys.time()
+[1] "2014-03-22 18:47:22 CDT"
+
+> rae <- read.csv("rae_public_noheader.csv", header=FALSE, as.is=TRUE, colClasses="character")
+
+> dim(rae)
+[1] 16145383       45
+
+> object.size(rae)
+7893750912 bytes
+
+> Sys.time()
+[1] "2014-03-22 18:56:49 CDT"
+
+> head(rae)
+  V1 V2      V3       V4 V5    V6         V7         V8 V9 V10 V11 V12   V13 V14
+1  2  1 5346561 12800589  1       2011-11-07 2011-12-31  f  54  54         0 325
+2  4  1 5346561 11498668  1       2009-08-27 2009-09-01  f   5 609         0 325
+3  7  2 6614801 12800590  1       2011-11-19 2011-12-31  f  42  42         0 288
+4  9  2 6614801 11498669  1       2008-07-01 2008-07-02  f   1 183         0 288
+5 10  3 6417306 12800591  1       2011-12-06 2011-12-31  f  25  25         0 145
+6  1  1 5346561        1  1 30490 2009-09-01 2010-10-02  t 396 396 100 62.29 325
+    V15  V16  V17       V18            V19   V20 V21 V22  V23   V24 V25      V26
+1 01089 2011 2008   Hyundai         Sonata   Car       0 3500 23000  23 Gasoline
+2 01089 2009 2008   Hyundai         Sonata   Car       0 3500 23000  23 Gasoline
+3 01776 2011 2008     Acura            Mdx   SUV       0 4500 40000  17 Gasoline
+4 01776 2008 2008     Acura            Mdx   SUV       0 4500 40000  17 Gasoline
+5 02364 2011 2005 Chevrolet Silverado-1500 Truck       0 5000 32000  15 Gasoline
+6 01089 2010 2008   Hyundai         Sonata   Car       0 3500 23000  23 Gasoline
+    V27  V28   V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40 V41 V42 V43 V44 V45
+1 21.65 0.00  0.00   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1
+2 22.54 0.00  0.00   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+3 16.00 0.00  0.00   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+4 17.00 0.00  0.00   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+5 13.29 0.00  0.00   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+6 22.09 2.82 25.53   0   0   0   0   0   0   0   1   1   1   1   0   0   0   0   0
+
+> names(rae) <- c("record_id", "vin_id", "plate_id", "me_id", "owner_type", "start_odom",
++                 "start_date", "end_date", "insp_match", "o ..." ... [TRUNCATED] 
+
+> ################################################################################
+> ### Create stats for global dataset and most recent release
+> COU .... [TRUNCATED] 
+
+> create.stats <- function(VERSION, d, SELECTOR)
++ {
++   ### Create COUNTS directory if it does not exist.
++   COUNTS.dir <- paste(COUNTS, VERSION, se .... [TRUNCATED] 
+
+> png("rae%02d.png", width=600, height=800)
+
+> reset.par <- par(mfcol=c(1,2))
+
+> SELECTOR <- rep(1, ncol(rae))
+
+> SELECTOR[c(1:5, 7:9, 18:22, 26, 30:45)] <- 0
+
+> create.stats("rae", rae, SELECTOR)
+1 record_id 
+2 vin_id 
+3 plate_id 
+4 me_id 
+5 owner_type 
+6 start_odom 
+7 start_date 
+8 end_date 
+9 insp_match 
+10 ovrlp_days 
+11 daysbtnins 
+12 ovrlp_pct 
+13 mi_per_day 
+14 muni_id 
+15 veh_zip 
+16 insp_year 
+17 model_year 
+18 make 
+19 model 
+20 veh_type 
+21 mcycle 
+22 hybrid 
+23 curbwt 
+24 msrp 
+25 mpg2008 
+26 fuel 
+27 mpg_adj 
+28 gal_perday 
+29 co2eqv_day 
+30 q1_2008 
+31 q2_2008 
+32 q3_2008 
+33 q4_2008 
+34 q1_2009 
+35 q2_2009 
+36 q3_2009 
+37 q4_2009 
+38 q1_2010 
+39 q2_2010 
+40 q3_2010 
+41 q4_2010 
+42 q1_2011 
+43 q2_2011 
+44 q3_2011 
+45 q4_2011 
+
+> par(reset.par)
+
+> dev.off()
+null device 
+          1 
+
+> ##################################################################################
+> 
+> Sys.time()
+[1] "2014-03-22 19:20:43 CDT"
+
+> sink()

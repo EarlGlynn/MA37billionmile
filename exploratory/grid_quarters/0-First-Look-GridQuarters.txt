@@ -1,0 +1,110 @@
+
+> ##################################################################################
+> ### grid_quarters_public_noheader.csv
+> 
+> Sys.time()
+[1] "2014-03-22 18:47:24 CDT"
+
+> gq <- read.csv("grid_quarters_public_noheader.csv", header=FALSE, colClasses="character")
+
+> names(gq) <- c("seq_id", "g250m_id", "hh10", "quarter", "veh_tot", "pass_veh",
++                "ovrlp_pct", "pass_geo", "best_geo", "pass_zip", "pa ..." ... [TRUNCATED] 
+
+> dim(gq)
+[1] 5691648      28
+
+> object.size(gq)
+2019990248 bytes
+
+> Sys.time()
+[1] "2014-03-22 18:52:05 CDT"
+
+> head(gq)
+    seq_id g250m_id hh10 quarter veh_tot pass_veh ovrlp_pct pass_geo best_geo
+1 22783256    16664 0.00 2008_q1  0.0000   0.0000       0.0        0        0
+2 22900063   133471 0.00 2008_q1  0.0000   0.0000       0.0        0        0
+3 22980847   214255 0.00 2008_q1  0.0000   0.0000       0.0        0        0
+4 23028012   261420 0.00 2008_q1  0.0000   0.0000       0.0        0        0
+5 23327949   205629 0.00 2008_q2  0.0000   0.0000       0.0        0        0
+6 23794212   316164 6.00 2008_q3  2.3971   2.3971    0.5000        2        1
+  pass_zip pass_muni veh_phh mipdaypass mipday_phh mipdaybest veh_lo veh_medlo
+1   0.0000    0.0000     0.0        0.0     0.0000        0.0    0.0       0.0
+2   0.0000    0.0000     0.0        0.0     0.0000        0.0    0.0       0.0
+3   0.0000    0.0000     0.0        0.0     0.0000        0.0    0.0       0.0
+4      0.0    0.0000     0.0        0.0     0.0000        0.0    0.0       0.0
+5   0.0000    0.0000     0.0        0.0     0.0000        0.0    0.0       0.0
+6   0.3905    0.0066    0.40    22.8420     9.1368    22.8420      0         1
+  veh_medhi veh_hi veh_vhi comm_veh comm_geo comm_zip comm_muni mipdaycomm mpg_eff
+1       0.0    0.0     0.0   0.0000        0        0    0.0000        0.0       0
+2       0.0    0.0     0.0   0.0000        0   0.0000    0.0000        0.0       0
+3       0.0    0.0     0.0   0.0000        0   0.0000    0.0000        0.0       0
+4       0.0    0.0     0.0   0.0000        0      0.0    0.0000        0.0       0
+5       0.0    0.0     0.0   0.0000        0   0.0000    0.0000        0.0       0
+6         0      0       0   0.0000        0   0.0000    0.0000        0.0       0
+  glpdaypass co2eqv_day
+1          0       0.00
+2          0       0.00
+3          0       0.00
+4          0       0.00
+5          0       0.00
+6          0       0.00
+
+> ################################################################################
+> ### Create stats for global dataset and most recent release
+> COU .... [TRUNCATED] 
+
+> create.stats <- function(VERSION, d, SELECTOR)
++ {
++   ### Create COUNTS directory if it does not exist.
++   COUNTS.dir <- paste(COUNTS, VERSION, se .... [TRUNCATED] 
+
+> png("GridQuarters%02d.png", width=600, height=800)
+
+> reset.par <- par(mfcol=c(1,2))
+
+> SELECTOR <- rep(1, ncol(gq))
+
+> SELECTOR[4] <- 0
+
+> create.stats("GridQuarters",  gq, SELECTOR)
+1 seq_id 
+2 g250m_id 
+3 hh10 
+4 quarter 
+5 veh_tot 
+6 pass_veh 
+7 ovrlp_pct 
+8 pass_geo 
+9 best_geo 
+10 pass_zip 
+11 pass_muni 
+12 veh_phh 
+13 mipdaypass 
+14 mipday_phh 
+15 mipdaybest 
+16 veh_lo 
+17 veh_medlo 
+18 veh_medhi 
+19 veh_hi 
+20 veh_vhi 
+21 comm_veh 
+22 comm_geo 
+23 comm_zip 
+24 comm_muni 
+25 mipdaycomm 
+26 mpg_eff 
+27 glpdaypass 
+28 co2eqv_day 
+
+> par(reset.par)
+
+> dev.off()
+null device 
+          1 
+
+> ##################################################################################
+> 
+> Sys.time()
+[1] "2014-03-22 18:59:54 CDT"
+
+> sink()
