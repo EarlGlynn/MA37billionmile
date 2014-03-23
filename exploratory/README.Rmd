@@ -13,10 +13,10 @@ Subfolders contain exploratory information about these files:
 
 Each of these subfolders contain three types of information: 
 
-Field Summary
--------------
+File Field Summaries
+--------------------
 
-1. A **Field-Summary** table is shown in pdf, Excel and csv formats.  
+A **Field-Summary** table is shown in pdf, Excel and csv formats.  
 
 Each file was first read with all data treated as character strings.  The _cmin_ and _cmax_ columns show the minimum and maximum size of the characters strings.  In particular, the _cmax_ value may be useful for database schema definitions.
 
@@ -33,7 +33,7 @@ Finally, for numeric data, the **Min** and **Max** numeric values are shown.
 Frequency Counts
 ----------------
 
-2. The subfolder prefixed with **Counts** has a file with the frequency counts for each of the fields in the file -- except files for fields with a very large number of unique values are not shown if they are 1 MB or larger (in general).  
+The subfolder prefixed with **Counts** has a file with the frequency counts for each of the fields in the file -- except files for fields with a very large number of unique values are not shown if they are 1 MB or larger (in general).  
 
 Often, unusual or unexpected values can be observed at the beginning and end of these counts files.  
 
@@ -46,14 +46,14 @@ For example, the file **15-veh_zip.csv** in the **Counts-rae** subfolders shows 
 Boxplots
 --------
 
-3. The subfolder prefixed with **Boxplots** shows boxplots for most numeric values that are not ordinal data. The boxplots are shown with the original data and the log10 values. 
+The subfolder prefixed with **Boxplots** shows boxplots for most numeric values that are not ordinal data. The boxplots are shown with the original data and the log10 values. 
 
 For now, all zero values are ignored in the creation of these boxplots.
 
 Viewing these boxplots is each via these links to the PDF files:    
 
-* [GridQuarters](exploratory/grid_quarters/Boxplots-GridQuarters/GridQuarters-Boxplots.pdf)
-* [rae-Boxplots](exploratory/rae/Boxplots-rae/rae-Boxplots.pdf)
+* [GridQuarters](grid_quarters/Boxplots-GridQuarters/GridQuarters-Boxplots.pdf)
+* [rae-Boxplots](rae/Boxplots-rae/rae-Boxplots.pdf)
 
 From the **rae** file, the following boxplot examples show the **mi_per_day** data are very skewed (even after ignoring zeroes), but are somewhat lognormal, but with a number of outliers:
 

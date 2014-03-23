@@ -8,7 +8,7 @@ See original [37 Billion Mile Data Challenge](http://www.37billionmilechallenge.
 Exploratory Phase
 -----------------
 
-1. Field Summary
+1. File Field Summaries
 2. Frequency Counts
 3. Boxplots
 

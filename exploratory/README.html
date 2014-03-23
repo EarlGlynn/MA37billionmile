@@ -158,11 +158,9 @@ hr {
 
 <p>Each of these subfolders contain three types of information: </p>
 
-<h2>Field Summary</h2>
+<h2>File Field Summaries</h2>
 
-<ol>
-<li>A <strong>Field-Summary</strong> table is shown in pdf, Excel and csv formats.<br/></li>
-</ol>
+<p>A <strong>Field-Summary</strong> table is shown in pdf, Excel and csv formats.  </p>
 
 <p>Each file was first read with all data treated as character strings.  The <em>cmin</em> and <em>cmax</em> columns show the minimum and maximum size of the characters strings.  In particular, the <em>cmax</em> value may be useful for database schema definitions.</p>
 
@@ -178,9 +176,7 @@ hr {
 
 <h2>Frequency Counts</h2>
 
-<ol>
-<li>The subfolder prefixed with <strong>Counts</strong> has a file with the frequency counts for each of the fields in the file &ndash; except files for fields with a very large number of unique values are not shown if they are 1 MB or larger (in general).<br/></li>
-</ol>
+<p>The subfolder prefixed with <strong>Counts</strong> has a file with the frequency counts for each of the fields in the file &ndash; except files for fields with a very large number of unique values are not shown if they are 1 MB or larger (in general).  </p>
 
 <p>Often, unusual or unexpected values can be observed at the beginning and end of these counts files.  </p>
 
@@ -192,17 +188,15 @@ hr {
 
 <h2>Boxplots</h2>
 
-<ol>
-<li>The subfolder prefixed with <strong>Boxplots</strong> shows boxplots for most numeric values that are not ordinal data. The boxplots are shown with the original data and the log10 values. </li>
-</ol>
+<p>The subfolder prefixed with <strong>Boxplots</strong> shows boxplots for most numeric values that are not ordinal data. The boxplots are shown with the original data and the log10 values. </p>
 
 <p>For now, all zero values are ignored in the creation of these boxplots.</p>
 
 <p>Viewing these boxplots is each via these links to the PDF files:    </p>
 
 <ul>
-<li><a href="exploratory/grid_quarters/Boxplots-GridQuarters/GridQuarters-Boxplots.pdf">GridQuarters</a></li>
-<li><a href="exploratory/rae/Boxplots-rae/rae-Boxplots.pdf">rae-Boxplots</a></li>
+<li><a href="grid_quarters/Boxplots-GridQuarters/GridQuarters-Boxplots.pdf">GridQuarters</a></li>
+<li><a href="rae/Boxplots-rae/rae-Boxplots.pdf">rae-Boxplots</a></li>
 </ul>
 
 <p>From the <strong>rae</strong> file, the following boxplot examples show the <strong>mi_per_day</strong> data are very skewed (even after ignoring zeroes), but are somewhat lognormal, but with a number of outliers:</p>
