@@ -52,8 +52,8 @@ For now, all zero values are ignored in the creation of these boxplots.
 
 Viewing these boxplots is each via these links to the PDF files:    
 
-* [GridQuarters](grid_quarters/Boxplots-GridQuarters/GridQuarters-Boxplots.pdf)
-* [rae-Boxplots](rae/Boxplots-rae/rae-Boxplots.pdf)
+* [GridQuarters](grid_quarters/Boxplots-GridQuarters/GridQuarters-Boxplots.pdf)  _click on raw_
+* [rae-Boxplots](rae/Boxplots-rae/rae-Boxplots.pdf) _click on raw_
 
 From the **rae** file, the following boxplot examples show the **mi_per_day** data are very skewed (even after ignoring zeroes), but are somewhat lognormal, but with a number of outliers:
 
